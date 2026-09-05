@@ -20,9 +20,7 @@ F: [F F F]
 using System;
 using System.Collections;
 
-int[] digits = [0, 0, 0];
 int sum;
-int length = digits.Length;
 
 int change(int num)
 {
@@ -36,36 +34,49 @@ int change(int num)
     }
 }
 
-do
+int[] iterate(int len)
 {
-    sum = 0;
-    foreach (int num in digits)
+    int[] digits = new int[len];
+
+    for (int i = 0; i < len; i++)
     {
-        Console.Write(num);
-        sum += num;
+        digits[i] = 0;
     }
 
-    Console.WriteLine();
-
-    bool flip = true;
-    
-    for (int i = 1; i <= length; i++)
+    do
     {
-        int index = length - i;
-        int digit = digits[index];
-        
-        if (flip)
+        sum = 0;
+        foreach (int num in digits)
         {
-            digits[index] = change(digit);
+            Console.Write(num);
+            sum += num;
+        }
 
-            if (digits[index] == 0)
+        Console.WriteLine();
+
+        bool flip = true;
+
+        for (int i = 1; i <= len; i++)
+        {
+            int index = len - i;
+            int digit = digits[index];
+
+            if (flip)
             {
-                flip = true;
-            }
-            else
-            {
-                flip = false;
+                digits[index] = change(digit);
+
+                if (digits[index] == 0)
+                {
+                    flip = true;
+                }
+                else
+                {
+                    flip = false;
+                }
             }
         }
-    }
-} while (sum < length);
+    } while (sum < len);
+    return digits;
+}
+
+iterate(5);

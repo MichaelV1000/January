@@ -1,1 +1,1 @@
-Console.WriteLine("Goodbye");
+Console.WriteLine("Goodbye to everyone");

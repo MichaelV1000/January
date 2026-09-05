@@ -1,27 +1,10 @@
-// p ∧ (q ∨ r)
-/*
--------------------
-p q r # p | (q | r)
--------------------
-T T T #   T    T  
-T T F #   T    T 
-T F T #   T    T 
-F T T #   T    T 
-T F F #   T    F 
-F T F #   T    T 
-F F T #   T    T 
-F F F #   F    F
--------------------
+int sum; // sum of items in digits array
 
-Contingent
-T: [T T T] [T T F] [T F T] [F T T] [T F F] [F T F] [F F T]
-F: [F F F]
-*/
-using System;
-using System.Collections;
-
-int sum;
-
+/// <summary>
+/// changes 0 to 1 or 1 t
+/// </summary>
+/// <param name="num"> int to be changed </param>
+/// <returns> changed int </returns>
 int change(int num)
 {
     if (num == 0)
@@ -34,10 +17,26 @@ int change(int num)
     }
 }
 
-int[] iterate(int len)
-{
-    int[] digits = new int[len];
+void print(string str) {
+    Console.Write(str);
+}
 
+void println(string str) {
+    Console.WriteLine(str);
+}
+
+int iterations = 0;
+
+/// <summary>
+/// iterates through binary array, counting 
+/// </summary>
+/// <param name="len"> length of binary array to be created </param>
+List<int[]> iterate(int len)
+{
+    int[] digits = new int[len]; // binary array 
+    List<int[]> arrs = new List<int[]>();
+
+    // iterates through array and sets all items to 0
     for (int i = 0; i < len; i++)
     {
         digits[i] = 0;
@@ -75,8 +74,14 @@ int[] iterate(int len)
                 }
             }
         }
+        iterations++;
+
+        arrs.Add(digits);
     } while (sum < len);
-    return digits;
+
+    Console.WriteLine();
+    Console.WriteLine();
+
+    return arrs;
 }
 
-iterate(5);

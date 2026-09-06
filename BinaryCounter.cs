@@ -17,12 +17,34 @@ int change(int num)
     }
 }
 
-void print(string str) {
+void print(object str) {
     Console.Write(str);
 }
 
-void println(string str) {
+void println(object str)
+{
     Console.WriteLine(str);
+}
+
+object translate(int num, object result1, object result2)
+{
+    if (num == 1)
+    {
+        return result1;
+    }
+    else
+    {
+        return result2;
+    }
+}
+
+bool isTrue(bool p, bool q, bool r)
+{
+    if (p && (q || r))
+    {
+        return true;
+    }
+    else return false;
 }
 
 int iterations = 0;
@@ -31,7 +53,7 @@ int iterations = 0;
 /// iterates through binary array, counting 
 /// </summary>
 /// <param name="len"> length of binary array to be created </param>
-List<int[]> iterate(int len)
+void iterate(int len)
 {
     int[] digits = new int[len]; // binary array 
     List<int[]> arrs = new List<int[]>();
@@ -47,9 +69,12 @@ List<int[]> iterate(int len)
         sum = 0;
         foreach (int num in digits)
         {
-            Console.Write(num);
+            Console.Write(translate(num, 'T', 'F') + " ");
             sum += num;
         }
+
+        Console.Write("# ");
+        Console.Write(isTrue((bool)translate(digits[0], true, false), (bool)translate(digits[1], true, false), (bool)translate(digits[2], true, false)));
 
         Console.WriteLine();
 
@@ -81,7 +106,6 @@ List<int[]> iterate(int len)
 
     Console.WriteLine();
     Console.WriteLine();
-
-    return arrs;
 }
 
+iterate(3);

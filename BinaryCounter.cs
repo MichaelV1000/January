@@ -40,7 +40,7 @@ object translate(int num, object result1, object result2)
 
 bool isTrue(bool p, bool q, bool r)
 {
-    if (p && (q || r))
+    if ((p && q) || (p && r))
     {
         return true;
     }

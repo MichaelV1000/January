@@ -38,9 +38,9 @@ object translate(int num, object result1, object result2)
     }
 }
 
-bool isTrue(bool p, bool q, bool r)
+bool isTrue(bool p, bool q)
 {
-    if ((p && q) || (p && r))
+    if ((p || !q) && (p || q) && (!p || !q) && (!p || q))
     {
         return true;
     }
@@ -74,7 +74,7 @@ void iterate(int len)
         }
 
         Console.Write("# ");
-        Console.Write(isTrue((bool)translate(digits[0], true, false), (bool)translate(digits[1], true, false), (bool)translate(digits[2], true, false)));
+        Console.Write(isTrue((bool)translate(digits[0], true, false), (bool)translate(digits[1], true, false)));
 
         Console.WriteLine();
 
@@ -108,4 +108,4 @@ void iterate(int len)
     Console.WriteLine();
 }
 
-iterate(3);
+iterate(2);
